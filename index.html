@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+
+    <title>Checkout Form</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style>
+  </head>
+  <body class="bg-[#F4F4F4]">
+    <nav class="bg-white w-full h-[72px]"></nav>
+    <section class="px-[25%] mt-6">
+      <div class="bg-white py-[30px] px-[35px] rounded-[10px] w-full">
+        <h1
+          class="not-italic font-bold text-2xl leading-8 text-gray-800 font-['Nunito']"
+        >
+          List Produk
+        </h1>
+        <p
+          class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+        >
+          Silahkan pilih produk yang ingin dibeli
+        </p>
+        <hr class="w-[50px] h-[4px] bg-black mt-3" />
+        <div
+          class="flex items-center justify-between w-full mt-6 py-2 pl-3 pr-[74px] bg-[#F4F4F4]"
+        >
+          <p
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+          >
+            Pilih Variant
+          </p>
+          <p
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+          >
+            Jumlah
+          </p>
+        </div>
+        <div id="product"></div>
+      </div>
+      <div class="bg-white py-[30px] px-[35px] rounded-[10px] w-full mt-[18px]">
+        <h1
+          class="not-italic font-bold text-2xl leading-8 text-gray-800 font-['Nunito']"
+        >
+          Checkout Detail
+        </h1>
+        <p
+          class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+        >
+          Silahkan isi form dibawah untuk melengkapi data checkout
+        </p>
+        <hr class="w-[50px] h-[4px] bg-black mt-3" />
+        <div
+          class="mt-[42px] pb-3 mb-6 border-b border-b-solid border-b-[#F4F4F4]"
+        >
+          <h1
+            class="font-['Nunito'] not-italic font-bold text-base leading-5 text-gray-800"
+          >
+            Data Penerima
+          </h1>
+        </div>
+        <div class="block mb-6">
+          <label
+            for="email"
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+            >Email</label
+          >
+          <input
+            class="bg-gray-100 box-border rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Masukkan email"
+          />
+        </div>
+        <div class="block mb-6">
+          <label
+            for="password"
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+            >Password</label
+          >
+          <input
+            class="bg-gray-100 box-border rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Masukkan password jika sudah terdaftar"
+          />
+        </div>
+        <div class="block mb-6">
+          <label
+            for="name"
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+            >Nama Lengkap</label
+          >
+          <input
+            class="bg-gray-100 box-border rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Masukkan nama lengkap"
+          />
+        </div>
+        <div class="block mb-6">
+          <label
+            for="phone"
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+            >No. Handphone / Whatsapp</label
+          >
+          <input
+            class="bg-gray-100 box-border rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+            type="number"
+            min="0"
+            name="phone"
+            id="phone"
+            placeholder="Masukkan no. handphone / whatsapp"
+          />
+        </div>
+
+        <div class="block mb-6">
+          <label
+            for="address"
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+            >Alamat Lengkap</label
+          >
+          <textarea
+            class="bg-gray-100 box-border resize-none h-[100px] rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+            type="text"
+            name="address"
+            id="address"
+            rows="4"
+            placeholder="Masukkan alamat lengkap"
+          ></textarea>
+        </div>
+        <div class="block mb-6">
+          <label
+            for="phone"
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+            >Kode Pos</label
+          >
+          <input
+            class="bg-gray-100 box-border rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+            type="text"
+            id="postal_code"
+            name="postal_code"
+            placeholder="Masukkan kode pos"
+          />
+        </div>
+        <div class="block mb-6">
+          <label
+            for="district"
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+            >Kota / Kecamatan</label
+          >
+          <input
+            class="bg-gray-100 box-border rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+            type="text"
+            name="district"
+            onfocus="showAutos()"
+            onclick="showAutos()"
+            onkeypress="showAutos()"
+            onblur="hideAutos()"
+            id="district"
+            autocomplete="address-level4"
+            placeholder="Pilih Kota/Kecamatan"
+          />
+          <div
+            id="autos"
+            class="block absolute bg-white rounded-md shadow"
+          ></div>
+        </div>
+        <div
+          class="mt-[42px] pb-3 mb-6 border-b border-b-solid border-b-[#F4F4F4]"
+        >
+          <h1
+            class="font-['Nunito'] not-italic font-bold text-base leading-5 text-gray-800"
+          >
+            Data Pengiriman
+          </h1>
+        </div>
+        <div class="flex items-center w-full justify-between w-full">
+          <div class="w-[47%]">
+            <label
+              for="courier"
+              class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+              >Pilih Kurir</label
+            >
+            <select
+              onchange="changePackages()"
+              class="bg-gray-100 box-border resize-none rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+              name="courier"
+              id="courier"
+            ></select>
+          </div>
+          <div class="w-[47%]">
+            <label
+              for="city"
+              class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+              >Pilih Layanan</label
+            >
+            <select
+              onchange="changeService()"
+              class="bg-gray-100 box-border resize-none rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+              name="courier_packages"
+              id="courier_packages"
+            ></select>
+          </div>
+        </div>
+        <div
+          class="mt-[42px] pb-3 mb-6 border-b border-b-solid border-b-[#F4F4F4]"
+        >
+          <h1
+            class="font-['Nunito'] not-italic font-bold text-base leading-5 text-gray-800"
+          >
+            Metode Pembayaran
+          </h1>
+        </div>
+        <div
+          class="mt-6 bg-gray-100 box-border rounded-[6px] border border-solid border-[#f4f4f4] p-5"
+        >
+          <div class="flex items-center cursor-pointer">
+            <input type="radio" id="bank" name="bank" value="bank" />
+            <label for="bank" class="flex items-center ml-3 cursor-pointer"
+              ><img src="https://i.ibb.co/86HTCB2/Frame-60.png" alt="bank" />
+              <p
+                class="ml-3 not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+              >
+                Bank Transfer
+              </p></label
+            ><br />
+          </div>
+        </div>
+        <div
+          class="mt-[42px] pb-3 mb-6 border-b border-b-solid border-b-[#F4F4F4]"
+        >
+          <h1
+            class="font-['Nunito'] not-italic font-bold text-base leading-5 text-gray-800"
+          >
+            Kode Referral
+          </h1>
+        </div>
+        <div class="block">
+          <label
+            for="referral"
+            class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+            >Masukkan Kode Referral Disini</label
+          >
+          <input
+            class="bg-gray-100 box-border rounded-md py-2 px-4 w-full font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4] mt-3"
+            type="text"
+            id="refferral"
+            name="referral"
+            placeholder="Masukkan kode referral"
+          />
+        </div>
+      </div>
+      <div class="bg-white py-[30px] px-[35px] rounded-[10px] w-full mt-[18px]">
+        <h1
+          class="not-italic font-bold text-2xl leading-8 text-gray-800 font-['Nunito']"
+        >
+          Rincian Pesanan
+        </h1>
+        <p
+          class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+        >
+          Silahkan cek data pesanan kamu apakah sudah sesuai atau belum
+        </p>
+        <hr class="w-[50px] h-[4px] bg-black mt-3 mb-[21px]" />
+        <div id="carts"></div>
+        <div id="shipping-cost"></div>
+
+        <div id="total-section"></div>
+      </div>
+      <button
+        onclick="handleCheckout()"
+        class="w-full h-[55px] border-none mt-[35px] rounded-[10px] bg-[#4BAEA0] flex items-center text-center justify-center text-white not-italic font-bold text-lg leading-6 font-['Nunito']"
+      >
+        Beli Sekarang
+      </button>
+
+      <div class="w-full flex flex-col items-center py-8">
+        <p
+          class="font-['Nunito'] not-italic font-normal text-sm leading-5 mb-1"
+        >
+          Powered By
+        </p>
+        <img src="https://i.ibb.co/DYDFWZF/head-logo.png" alt="squids" />
+      </div>
+    </section>
+  </body>
+  <script type="text/javascript"></script>
+  <script type="text/javascript">
+    const BASE_URL = "https://53c420e5327c.ngrok.io/api/v1";
+    const BANK_ACCOUNT = "BCA";
+    const params = {
+      domain: "//demoalpha.staging.squids.id",
+    };
+    const autosElement = document.getElementById("autos");
+    const districtFields = document.getElementById("district");
+    const courierPackagesElement = document.getElementById("courier_packages");
+    const courierFields = document.getElementById("courier");
+    const cartElement = document.getElementById("carts");
+    const totalSection = document.getElementById("total-section");
+    const shippingCost = document.getElementById("shipping-cost");
+    let listWarehouse = [];
+    let isChangeCourier = true;
+    let isChangeDistrict = true;
+    let isChangeCart = true;
+    const uniq_code =
+      localStorage.getItem("uniq_code") ??
+      Date.now().toString(36) + Math.random().toString(36).substr(2);
+    const checkStocks = async (id, variants) => {
+      const stocks = await fetch(
+        BASE_URL +
+          "/products/" +
+          id +
+          "/stocks?" +
+          new URLSearchParams({
+            ...params,
+            variants: JSON.stringify(variants),
+          })
+      );
+      return await stocks?.json();
+    };
+    const getCarts = async () => {
+      const carts = await fetch(
+        BASE_URL +
+          "/orders/temp_shopping_carts?" +
+          new URLSearchParams({ ...params, uniq_code })
+      );
+      return await carts?.json();
+    };
+    const checkShippingCost = async () => {
+      const cityId = districtFields?.getAttribute("cityId");
+      const courier_service = courierPackagesElement?.value;
+
+      await fetch(BASE_URL + "/orders/checker_shopping_costs", {
+        method: "POST",
+        headers: {
+          accept: "application/json, text/plain",
+          "content-type": "application/json;charset=UTF-8",
+        },
+        body: JSON.stringify({
+          shipping_cost: {
+            source: listWarehouse?.[0]?.city_id,
+            target: parseInt(cityId),
+            courier: courierFields?.value,
+            courier_service,
+          },
+        }),
+      }).then(async (res) => {
+        const shipps = await res?.json();
+        const h1 = `// <h1
+               //   class="not-italic font-normal text-xs leading-5 text-gray-800 font-['Nunito']"
+               // >
+               //   (300 gr)
+               // </h1>`;
+
+        shippingCost.innerHTML = ` <div
+             class="flex items-center justify-between w-full py-4 border-t border-dashed border-t-[#F4F4F4] border-b border-b-[#F4F4F4]"
+           >
+             <div class="w-1/4">
+               <h1
+                 class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+               >
+                 Biaya Pengiriman
+               </h1>
+
+             </div>
+             <p
+    id="sp"
+    value="${shipps?.value}"
+               class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+             >
+               Rp. ${shipps?.value?.toLocaleString()}
+             </p>
+           </div>`;
+        isChangeCart = false;
+      });
+    };
+    const changeService = () => {
+      isChangeCart = true;
+    };
+    const addToCart = async (id, qty, uniq_codes, variants) => {
+      const adds = await fetch(
+        BASE_URL + "/orders/temp_shopping_carts/add_to_cart",
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json, text/plain",
+            "content-type": "application/json;charset=UTF-8",
+          },
+          body: JSON.stringify({
+            shopping_cart: {
+              productable_id: id,
+              productable_type: "Product",
+              product_id: id,
+              variants,
+              quantity: qty,
+              uniq_code: uniq_codes,
+              variants: variants,
+              domain: params?.domain?.slice(2, params?.domain?.length),
+            },
+          }),
+        }
+      );
+      return await adds?.json();
+    };
+    const updateCart = async (
+      id,
+      qty,
+      uniq_codes,
+      variants,
+      current_variants
+    ) => {
+      const adds = await fetch(
+        BASE_URL + "/orders/temp_shopping_carts/update_cart",
+        {
+          method: "PUT",
+          headers: {
+            accept: "application/json, text/plain",
+            "content-type": "application/json;charset=UTF-8",
+          },
+          body: JSON.stringify({
+            shopping_cart: {
+              productable_id: id,
+              productable_type: "Product",
+              product_id: id,
+              variants,
+              quantity: qty,
+              uniq_code: uniq_codes,
+              variants: variants,
+              current_variants,
+              domain: params?.domain?.slice(2, params?.domain?.length),
+            },
+          }),
+        }
+      );
+      return await adds?.json();
+    };
+    const removeCart = async (id, uniq_codes) => {
+      const adds = await fetch(
+        BASE_URL + "/orders/temp_shopping_carts/remove_from_cart",
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json, text/plain",
+            "content-type": "application/json;charset=UTF-8",
+          },
+          body: JSON.stringify({
+            shopping_cart: {
+              uniq_code: uniq_codes,
+              shopping_cart_item_id: id,
+              domain: params?.domain?.slice(2, params?.domain?.length),
+            },
+          }),
+        }
+      );
+      return await adds?.json();
+    };
+    async function addminQty(elem, variants) {
+      const newVariants = variants ?? {};
+      isChangeCart = true;
+      const id = elem.getAttribute("id");
+      if (id.includes("min")) {
+        const qty = document.getElementById("qty-" + id.replace(/min-/g, ""));
+        removeCart(parseInt(id.replace(/min-/g, "")), uniq_code).then((res) => {
+          let value = parseInt(qty.value);
+          if (value > 0) {
+            value = value - 1;
+          } else {
+            value = 0;
+          }
+          qty.value = value;
+        });
+      } else {
+        const qty = document.getElementById("qty-" + id.replace(/add-/g, ""));
+        const stock = await checkStocks(id.replace(/add-/g, ""), newVariants);
+        let value = parseInt(qty.value);
+        if (stock?.data?.quantity > 0) {
+          addToCart(id.replace(/add-/g, ""), value + 1, uniq_code, newVariants)
+            .then((res) => {
+              localStorage.setItem("uniq_code", uniq_code);
+              value = value + 1;
+              qty.value = value;
+            })
+            .catch((err) => alert(err));
+        } else {
+          alert("Barang Tidak Tersedia!");
+        }
+      }
+    }
+    function showAutos() {
+      isChangeDistrict = true;
+      autosElement.classList.add("block");
+      autosElement.classList.remove("hidden");
+    }
+    function hideAutos() {
+      document.addEventListener(
+        "click",
+        function (e) {
+          if (e?.target?.id !== "autos") {
+            isChangeDistrict = false;
+            autosElement.classList.add("hidden");
+            autosElement.classList.remove("block");
+          }
+        },
+        false
+      );
+    }
+    function chooseDistrict(elem) {
+      const cityId = elem.getAttribute("cityId");
+      const value = elem.getAttribute("value");
+      const districtId = elem.getAttribute("id");
+      districtFields.value = value;
+      districtFields.setAttribute("cityId", cityId);
+      districtFields.setAttribute("districtId", districtId);
+      setTimeout(() => {
+        isChangeCourier = true;
+      }, 200);
+    }
+    const changeVariantCart = async () => {
+      const variantCart = document.getElementById("variant-cart");
+      const qty = variantCart.getAttribute("qty");
+      const productID = variantCart.getAttribute("productId");
+      const values = variantCart?.options[
+        variantCart.selectedIndex
+      ].value?.replace(/'/g, '"');
+      const currentVariant = variantCart
+        .getAttribute("currentVariant")
+        .replace(/'/g, '"');
+      if (values) {
+        await updateCart(
+          productID,
+          qty,
+          uniq_code,
+          JSON.parse(values),
+          JSON.parse(currentVariant)
+        );
+      }
+    };
+    const changeDistricts = async (val) => {
+      autosElement.classList.add("block");
+      autosElement.classList.remove("hidden");
+
+      const res = await fetch(
+        BASE_URL + "/districts?" + new URLSearchParams({ name: val })
+      );
+      const district = await res?.json();
+      let html = "";
+      district?.data?.forEach((dis) => {
+        let htmlSegment = `<div onclick="chooseDistrict(this)" value="${dis?.formatted_name}" id="${dis?.id}" cityId="${dis?.city_id}"
+                     class="cursor-pointer px-4 py-2 border-l border-r border-solid border-[#f4f4f4]"
+                   >
+                     <p
+                       class="font-['Nunito'] not-italic font-normal text-sm leading-5 text-gray-800"
+                     >
+                      ${dis?.formatted_name}
+                     </p>
+                   </div>`;
+
+        html += htmlSegment;
+      });
+      autosElement.innerHTML = html;
+      isChangeDistrict = false;
+    };
+    const changePackages = () => {
+      isChangeCourier = true;
+      const courierId =
+        courierFields.options[courierFields.selectedIndex].getAttribute(
+          "courierid"
+        );
+      courierFields.setAttribute("courierid", courierId);
+    };
+    const changeCourierPackages = async (courier) => {
+      const cityId = districtFields?.getAttribute("cityId");
+
+      await fetch(
+        BASE_URL + "/orders/checker_shopping_costs/courier_packages",
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json, text/plain",
+            "content-type": "application/json;charset=UTF-8",
+          },
+          body: JSON.stringify({
+            shipping_cost: {
+              courier: courier,
+              source: listWarehouse?.[0]?.city_id,
+              target: cityId,
+            },
+          }),
+        }
+      ).then(async (res) => {
+        isChangeCourier = false;
+        const courierPackages = await res?.json();
+        let html = "<option value=''>Pilih Layanan</option>";
+        if (courierPackages?.code === 400) {
+          alert(courierPackages?.description);
+        } else if (courierPackages?.courier_packages !== []) {
+          courierPackages?.courier_packages?.forEach((cours) => {
+            let htmlSegment = `<option value="${cours?.service}">${
+              cours?.description
+            }${cours?.etd && `(${cours?.etd})`}</option>`;
+
+            html += htmlSegment;
+          });
+        } else {
+          alert("Tidak Ada Layanan Kurir untuk tujuan Kota anda!");
+        }
+
+        courierPackagesElement.innerHTML = html;
+      });
+    };
+    const getCarted = async () => {
+      const carts = await getCarts();
+      const sp = document?.getElementById("sp");
+      const shipCosts = sp?.getAttribute("value");
+
+      if (carts?.data) {
+        let html = "";
+        carts?.data?.items.forEach((cart, index) => {
+          const newVariant = {};
+          if (cart.variants && cart?.variants?.length > 0) {
+            const arr = [];
+            // eslint-disable-next-line array-callback-return
+            cart?.variants?.map((val) => {
+              if (val?.variant_item.id === "") {
+                arr.push(val?.variant_name);
+              } else {
+                // eslint-disable-next-line array-callback-return
+                cart?.variants?.map((val2) => {
+                  newVariant[val2.variant_id] = val2.variant_item.id.toString();
+                });
+              }
+            });
+          }
+          let htmlSegment = ` <div class="flex items-center justify-between w-full py-4 ${
+            index + 1 !== carts?.data?.items.length &&
+            " border-b border-b-solid border-b-[#F4F4F4]"
+          }">
+               <div class="w-2/4">
+                 <h1
+                   class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+                 >
+                   ${cart?.product_name} (${cart?.quantity})
+                 </h1>
+                 <h1
+                   class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+                 >
+                   @ ${cart?.formated_price}
+                 </h1>
+                 <div class="flex items-center mt-2">
+
+    		  ${
+            cart.product_variants?.length > 0
+              ? `
+                   <label
+                     for="variant"
+                     class="not-italic font-normal text-xs leading-4 text-gray-800"
+                   >
+                     Variant
+                   </label>
+                   <select
+                     class="bg-gray-100 ml-3 box-border resize-none rounded-md p-2 w-full font-['Nunito'] not-italic font-normal text-[10px] leading-5 text-gray-800 outline-none border border-solid border-[#f4f4f4]"
+                     name="variant"
+                     id="variant-cart"
+					 productId="${cart?.product_id}"
+					 currentVariant="${JSON.stringify(newVariant)?.replace(/"/g, "'")}"
+					 qty="${cart?.quantity}"
+					 onchange="changeVariantCart()"
+                   >
+       ${cart.product_variants?.map(
+         (it) =>
+           `<option ${
+             newVariant === it?.variants
+               ? 'selected="selected" hidden="hidden"'
+               : ""
+           } value="${JSON.stringify(it?.variants)?.replace(/"/g, "'")}">
+        ${Array.from(Array(it?.variant_combination?.length).keys()).map(
+          (i) => (i !== 0 ? " " : "") + it?.variant_combination?.[i]
+        )}
+             </option>`
+       )}
+                   </select>`
+              : ""
+          }
+                 </div>
+               </div>
+               <p
+                 class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+               >
+                ${cart?.formated_amount}
+               </p>
+             </div>`;
+
+          html += htmlSegment;
+        });
+        cartElement.innerHTML = html;
+        totalSection.innerHTML = `
+    	<div class="flex items-center justify-between w-full py-4">
+               <div class="w-1/4">
+                 <h1
+                   class="not-italic font-extrabold leading-5 text-gray-800 font-['Nunito']"
+                 >
+                   Total
+                 </h1>
+               </div>
+               <p
+                 class="not-italic font-extrabold leading-5 text-gray-800 font-['Nunito']"
+               >
+                Rp. ${(
+                  carts?.data?.amount_total +
+                  (shipCosts ? parseInt(shipCosts) : 0)
+                )?.toLocaleString()}
+               </p>
+             </div>
+    	`;
+        isChangeCart = false;
+      }
+    };
+    setInterval(() => {
+      if (isChangeDistrict && districtFields.value?.length > 0) {
+        changeDistricts(districtFields.value);
+      }
+    }, 100);
+    setInterval(() => {
+      if (isChangeCourier && courierFields.value.length > 0) {
+        changeCourierPackages(courierFields.value);
+      }
+    }, 1000);
+    setInterval(() => {
+      if (isChangeCart && localStorage.getItem("uniq_code")) {
+        getCarted();
+      }
+    }, 1000);
+    setInterval(() => {
+      if (
+        isChangeCart &&
+        districtFields?.value?.length > 0 &&
+        courierFields?.value?.length &&
+        courierPackagesElement?.value?.length
+      ) {
+        checkShippingCost();
+      }
+    }, 1000);
+    const fetchAPI = async () => {
+      const products = await fetch(
+        BASE_URL + "/products/576?" + new URLSearchParams(params)
+      );
+      const couriers = await fetch(
+        BASE_URL + "/shipment_setups/couriers?" + new URLSearchParams(params)
+      );
+      const warehouses = await fetch(
+        BASE_URL + "/warehouses?" + new URLSearchParams(params)
+      );
+      const product = await products?.json();
+      const courier = await couriers?.json();
+      const warehouse = await warehouses?.json();
+      if (product?.data) {
+        const productElement = document.getElementById("product");
+
+        let html = "";
+        product?.data?.map_stock_attr?.length > 0 &&
+          product?.data.map_stock_attr?.forEach((prods) => {
+            let htmlSegment = `<div
+                   class="flex items-center justify-between w-full py-4 pl-3 pr-[48px] border-b border-b-solid border-b-[#F4F4F4]"
+                 >
+                   <p
+                     class="not-italic font-normal text-sm leading-5 text-gray-800 font-['Nunito']"
+                   >
+                     ${
+                       prods?.variant_combination?.length &&
+                       Array.from(
+                         Array(prods?.variant_combination?.length).keys()
+                       ).map(
+                         (i) =>
+                           (i !== 0 ? " " : "") +
+                           prods?.variant_combination?.[i]
+                       )
+                     }
+                   </p>
+                   <div class="flex text-center items-center justify-between w-[90px]">
+                     <img
+                       src="https://i.ibb.co/h29N7Zz/Frame-50.png"
+                       alt="min"
+                       class="cursor-pointer"
+                       id="min-${product.data.id}"
+                       onclick="addminQty(this, ${JSON.stringify(
+                         prods?.variants
+                       )?.replace(/"/g, "'")})"
+                     />
+                     <input
+                       type="number"
+                       id="qty-${product.data.id}"
+                       value="0"
+                       min="0"
+                       class="not-italic w-auto max-w-[30px] font-normal w-auto text-center outline-none border-none bg-transparent text-sm leading-5 text-gray-800 font-['Nunito']"
+                     />
+
+                     <img
+                       src="https://i.ibb.co/HTx11Q8/Frame-51.png"
+                       alt="min"
+                       class="cursor-pointer"
+                       id="add-${product.data.id}"
+                       onclick="addminQty(this, ${JSON.stringify(
+                         prods?.variants
+                       )?.replace(/"/g, "'")})"
+                     />
+                   </div>
+                 </div>`;
+
+            html += htmlSegment;
+          });
+
+        productElement.innerHTML = html;
+      }
+      if (courier?.data) {
+        const courierElement = document.getElementById("courier");
+
+        let html = "<option value=''>Pilih Kurir</option>";
+        courier?.data.forEach((cour) => {
+          let htmlSegment = `<option value="${cour?.code}" courierid="${cour?.id}">${cour?.name}</option>`;
+
+          html += htmlSegment;
+        });
+        courierElement.innerHTML = html;
+      }
+      if (warehouse?.data) {
+        listWarehouse = warehouse.data;
+      }
+    };
+    fetchAPI();
+
+    const handleCheckout = async () => {
+      const courier_service = courierPackagesElement?.value;
+      const courier_id = parseInt(courierFields?.getAttribute("courierid"));
+      const shoppingCarts = {
+        shopping_cart: {
+          uniq_code,
+          postal_code: document.getElementById("postal_code")?.value,
+          address: document.getElementById("address")?.value,
+          email: document.getElementById("email")?.value,
+          name: document.getElementById("name")?.value,
+          district_id: parseInt(districtFields?.getAttribute("districtId")),
+          city_id: parseInt(districtFields?.getAttribute("cityId")),
+          phone_number: document.getElementById("phone")?.value?.toString(),
+          password: document.getElementById("password").value.length
+            ? document.getElementById("password").value
+            : Date.now().toString(36) + Math.random().toString(36).substr(2),
+          warehouse_id: listWarehouse?.[0].id.toString(),
+          dropship: false,
+          courier: courierFields?.value,
+          courier_service,
+          affiliate_code: null,
+          ref: document.getElementById("refferral")?.value?.length
+            ? document.getElementById("refferral")?.value
+            : null,
+          reseller_id: null,
+          courier_id,
+          domain: params?.domain?.slice(2, params?.domain?.length),
+        },
+      };
+      if (document.getElementById("bank").checked) {
+        await fetch(BASE_URL + "/orders/temp_shopping_carts/checkout", {
+          method: "POST",
+          headers: {
+            accept: "application/json, text/plain",
+            "content-type": "application/json;charset=UTF-8",
+          },
+          body: JSON.stringify(shoppingCarts),
+        })
+          .then(async (res) => {
+            const response = await res?.json();
+            if (response?.data?.status) {
+              await fetch(BASE_URL + "/orders/shopping_carts/proceed", {
+                method: "POST",
+                headers: {
+                  accept: "application/json, text/plain",
+                  "content-type": "application/json;charset=UTF-8",
+                  authorization: "Bearer " + response?.data?.user?.access_token,
+                },
+                body: JSON.stringify({
+                  proceed: {
+                    order_id: response?.data?.order?.id?.toString(),
+                    selected_payment_channel:
+                      document.getElementById("bank").checked && BANK_ACCOUNT,
+                  },
+                }),
+              }).then(async (resp) => {
+                const responde = await resp.json();
+                if (responde) {
+                  localStorage.clear();
+                  const url = `http://localhost:3000/payments-custom/${response?.data?.order?.id}`;
+                  window.open(url, "_self");
+                }
+              });
+            } else {
+              alert("Terjadi Kesalahan!");
+            }
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else {
+        alert("Pilih Metode Pembayaran!");
+      }
+    };
+  </script>
+</html>
